@@ -4,30 +4,50 @@
     background: var(--color-accent-light);
     padding: 5rem 3rem;
     width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
-/**
- * Content container
- * Centers content with max-width constraint
- */
+/* Subtle background artwork */
+.services-section::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background-image: radial-gradient(circle, var(--color-gray-200) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.services-section::after {
+    content: '';
+    position: absolute;
+    bottom: 20%;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    border: 2px solid var(--color-gray-200);
+    border-radius: 50%;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
 .services-container {
     max-width: 1300px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
-/* ============================================
-   HEADER SECTION
-   ============================================ */
-
-/**
- * Section header layout
- * Two-column layout on desktop
- */
+/* Header Section */
 .services-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
     margin-bottom: 3.5rem;
 }
 
@@ -35,10 +55,6 @@
     flex: 1;
 }
 
-/**
- * Section badge/tag
- * Small uppercase label above title
- */
 .section-badge {
     display: inline-block;
     font-size: 0.75rem;
@@ -49,10 +65,6 @@
     text-transform: uppercase;
 }
 
-/**
- * Main section title
- * Large, bold heading
- */
 .services-title {
     font-size: 3rem;
     font-weight: 700;
@@ -60,16 +72,7 @@
     color: var(--color-primary);
     letter-spacing: -1px;
     max-width: 550px;
-    margin: 0;
-}
-
-/**
- * Header description wrapper
- */
-.services-header-description {
-    flex: 1;
-    display: flex;
-    align-items: center;
+    margin: 0 0 1rem 0;
 }
 
 .services-header-description p {
@@ -81,14 +84,131 @@
     margin: 0;
 }
 
-/* ============================================
-   SERVICES GRID
-   ============================================ */
+/* Services Illustration */
+.services-illustration-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/**
- * Grid layout for service cards
- * 3 columns on desktop, responsive on smaller screens
- */
+.services-diagram {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    filter: drop-shadow(0 4px 12px rgba(10, 36, 99, 0.08));
+    animation: diagramFloat 6s ease-in-out infinite;
+}
+
+@keyframes diagramFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Rotating outer circle */
+.outer-circle {
+    animation: rotateCircle 30s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes rotateCircle {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Central server pulse */
+.central-server {
+    animation: serverPulse 3s ease-in-out infinite;
+}
+
+@keyframes serverPulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.02);
+    }
+}
+
+/* Orbit icons animation */
+.orbit-icon {
+    animation: iconAppear 0.8s ease-out backwards;
+}
+
+.icon-1 {
+    animation-delay: 0.2s;
+}
+
+.icon-2 {
+    animation-delay: 0.4s;
+}
+
+.icon-3 {
+    animation-delay: 0.6s;
+}
+
+.icon-4 {
+    animation-delay: 0.8s;
+}
+
+@keyframes iconAppear {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Connection lines animation */
+.connection-line {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawConnection 2s ease-out forwards;
+}
+
+.line-1 {
+    animation-delay: 1s;
+}
+
+.line-2 {
+    animation-delay: 1.2s;
+}
+
+.line-3 {
+    animation-delay: 1.4s;
+}
+
+.line-4 {
+    animation-delay: 1.6s;
+}
+
+@keyframes drawConnection {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -98,14 +218,7 @@
     margin: 0;
 }
 
-/* ============================================
-   SERVICE CARD
-   ============================================ */
-
-/**
- * Individual service card
- * Vertical layout with hover effects
- */
+/* Service Card */
 .service-card {
     display: flex;
     flex-direction: column;
@@ -115,35 +228,37 @@
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     height: auto;
-    /* Ensure focus outline is visible */
     isolation: isolate;
+    position: relative;
 }
 
-/**
- * Hover state for service cards
- * Lifts card and adds shadow
- */
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--color-accent-blue);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover::before {
+    transform: scaleX(1);
+}
+
 .service-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(10, 36, 99, 0.18);
 }
 
-/**
- * Focus state for accessibility
- */
 .service-card:focus-within {
     outline: 3px solid var(--color-accent-blue);
     outline-offset: 2px;
 }
 
-/* ============================================
-   SERVICE CARD CONTENT
-   ============================================ */
-
-/**
- * Content wrapper inside card
- * Vertical flex layout
- */
 .service-content {
     width: 100%;
     display: flex;
@@ -152,13 +267,9 @@
     padding: 2rem;
 }
 
-/**
- * Service icon container
- * Circular background with border
- */
 .service-icon {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     background: var(--color-accent-light);
     border: 2px solid var(--color-primary);
     border-radius: var(--radius-md);
@@ -167,11 +278,15 @@
     justify-content: center;
     color: var(--color-primary);
     flex-shrink: 0;
+    transition: all 0.3s ease;
 }
 
-/**
- * Service title/heading
- */
+.service-card:hover .service-icon {
+    background: var(--color-primary);
+    color: var(--color-white);
+    transform: scale(1.05);
+}
+
 .service-title {
     font-size: 1.375rem;
     font-weight: 700;
@@ -180,14 +295,6 @@
     margin: 0;
 }
 
-/* ============================================
-   SERVICE FEATURES
-   ============================================ */
-
-/**
- * Features list
- * 2-column grid layout
- */
 .service-features {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -198,10 +305,6 @@
     margin: 0;
 }
 
-/**
- * Individual feature item
- * Icon + text layout
- */
 .feature-item {
     display: flex;
     align-items: flex-start;
@@ -212,23 +315,12 @@
     line-height: 1.4;
 }
 
-/**
- * Feature checkmark icon
- */
 .feature-item svg {
     flex-shrink: 0;
     color: var(--color-accent-blue);
     margin-top: 2px;
 }
 
-/* ============================================
-   SERVICE BUTTON
-   ============================================ */
-
-/**
- * "Read More" CTA button
- * Primary button with arrow icon
- */
 .service-button {
     align-self: flex-start;
     padding: 0.625rem 1.5rem;
@@ -243,37 +335,24 @@
     align-items: center;
     gap: 0.375rem;
     transition: all 0.3s ease;
-    /* Ensure proper focus styles */
     position: relative;
 }
 
-/**
- * Button hover state
- */
 .service-button:hover {
     background: var(--color-primary-dark);
     transform: translateX(5px);
     box-shadow: var(--shadow-blue);
 }
 
-/**
- * Button focus state for accessibility
- */
 .service-button:focus {
     outline: 3px solid var(--color-accent-blue);
     outline-offset: 3px;
 }
 
-/**
- * Button active state
- */
 .service-button:active {
     transform: translateX(3px);
 }
 
-/**
- * Arrow icon animation on hover
- */
 .service-button svg {
     transition: transform 0.3s ease;
 }
@@ -282,24 +361,13 @@
     transform: translateX(3px);
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-
-/**
- * Large Desktop (1200px - 1300px)
- * Slight adjustments
- */
+/* Responsive Design */
 @media (max-width: 1300px) {
     .services-grid {
         gap: 1.5rem;
     }
 }
 
-/**
- * Tablet Landscape (1100px and below)
- * Switch to 2-column grid
- */
 @media (max-width: 1100px) {
     .services-section {
         padding: 4rem 2.5rem;
@@ -309,25 +377,32 @@
         font-size: 2.5rem;
     }
 
-    /* Change to 2 columns */
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .services-diagram {
+        max-width: 350px;
+    }
 }
 
-/**
- * Tablet Portrait (768px - 968px)
- * Stack header, maintain 2 columns
- */
 @media (max-width: 968px) {
     .services-section {
         padding: 4rem 2rem;
     }
 
     .services-header {
-        flex-direction: column;
+        grid-template-columns: 1fr;
         gap: 2rem;
         margin-bottom: 3rem;
+    }
+
+    .services-illustration-wrapper {
+        order: -1;
+    }
+
+    .services-diagram {
+        max-width: 320px;
     }
 
     .services-title {
@@ -339,7 +414,6 @@
         max-width: 100%;
     }
 
-    /* Keep 2 columns */
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -348,16 +422,11 @@
         padding: 1.75rem;
     }
 
-    /* Stack features in single column */
     .service-features {
         grid-template-columns: 1fr;
     }
 }
 
-/**
- * Mobile (640px and below)
- * Single column layout, reduced spacing
- */
 @media (max-width: 640px) {
     .services-section {
         padding: 3rem 1.5rem;
@@ -367,7 +436,6 @@
         font-size: 1.875rem;
     }
 
-    /* Single column layout */
     .services-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -383,8 +451,8 @@
     }
 
     .service-icon {
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
     }
 
     .feature-item {
@@ -397,19 +465,19 @@
     }
 }
 
-/* ============================================
-   ACCESSIBILITY ENHANCEMENTS
-   ============================================ */
-
-/**
- * Reduced motion for users who prefer it
- */
+/* Accessibility - Reduced motion */
 @media (prefers-reduced-motion: reduce) {
 
     .service-card,
     .service-button,
-    .service-button svg {
+    .service-button svg,
+    .services-diagram,
+    .outer-circle,
+    .central-server,
+    .orbit-icon,
+    .connection-line {
         transition: none;
+        animation: none !important;
     }
 
     .service-card:hover {
@@ -425,9 +493,7 @@
     }
 }
 
-/**
- * High contrast mode support
- */
+/* High contrast mode */
 @media (prefers-contrast: high) {
     .service-card {
         border-width: 3px;
@@ -438,10 +504,7 @@
     }
 }
 
-/**
- * Print styles
- * Optimize for printing
- */
+/* Print styles */
 @media print {
     .services-section {
         background: white;
@@ -455,6 +518,15 @@
     }
 
     .service-button {
+        display: none;
+    }
+
+    .services-section::before,
+    .services-section::after {
+        display: none;
+    }
+
+    .services-illustration-wrapper {
         display: none;
     }
 }
