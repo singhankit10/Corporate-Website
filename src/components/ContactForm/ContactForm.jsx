@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import emailjs from '@emailjs/browser';
 import './ContactForm.css';
 
 const ContactForm = ({ 
@@ -17,11 +18,15 @@ const ContactForm = ({
 
   const [formStatus, setFormStatus] = useState({
     submitted: false,
+    loading: false,
     error: false,
     message: ''
   });
 
   const [errors, setErrors] = useState({});
+
+  // Initialize EmailJS
+  emailjs.init('Z5hjQYynhX-LzP4Od');
 
   // Validation functions
   const validateEmail = (email) => {
@@ -30,6 +35,7 @@ const ContactForm = ({
   };
 
   const validatePhone = (phone) => {
+    if (!phone) return true; // Phone is optional
     const re = /^[\d\s\-+()]{10,}$/;
     return re.test(phone);
   };
@@ -81,38 +87,76 @@ const ContactForm = ({
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Simulate form submission
-      console.log('Form submitted:', formData);
-      
-      setFormStatus({
-        submitted: true,
-        error: false,
-        message: 'Thank you for reaching out! We\'ll get back to you soon.'
-      });
+      setFormStatus({ submitted: false, loading: true, error: false, message: '' });
 
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: ''
-      });
+      try {
+        // Send email using EmailJS
+        await emailjs.send(
+          'service_6ibhnj2',      // Service ID
+          'template_hfqcoqd',     // Template ID
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            phone: formData.phone || 'Not provided',
+            subject: formData.subject,
+            message: formData.message,
+          }
+        );
 
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus({ submitted: false, error: false, message: '' });
-      }, 5000);
+        // Success! Show success message
+        setFormStatus({
+          submitted: true,
+          loading: false,
+          error: false,
+          message: '✓ Message sent successfully! We\'ll get back to you soon.'
+        });
+
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+
+        // Keep success message visible for 8 seconds
+        setTimeout(() => {
+          setFormStatus({ submitted: false, loading: false, error: false, message: '' });
+        }, 8000);
+
+      } catch (error) {
+        console.error('EmailJS Error:', error);
+        setFormStatus({
+          submitted: false,
+          loading: false,
+          error: true,
+          message: '✗ Something went wrong. Please try again or contact us directly.'
+        });
+
+        // Clear error after 6 seconds
+        setTimeout(() => {
+          setFormStatus({ submitted: false, loading: false, error: false, message: '' });
+        }, 6000);
+      }
     } else {
       setFormStatus({
         submitted: false,
+        loading: false,
         error: true,
-        message: 'Please fix the errors below'
+        message: '✗ Please fix the errors below'
       });
+
+      // Clear error message after 4 seconds
+      setTimeout(() => {
+        if (formStatus.error) {
+          setFormStatus({ submitted: false, loading: false, error: false, message: '' });
+        }
+      }, 4000);
     }
   };
 
@@ -131,7 +175,7 @@ const ContactForm = ({
             {contactInfo.map((info, index) => (
               <div key={index} className="info-card">
                 <div className="info-card-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                     {info.icon}
                   </svg>
                 </div>
@@ -155,26 +199,6 @@ const ContactForm = ({
         {/* Right Side - Contact Form */}
         <div className="contact-form-side">
           <form className="contact-form" onSubmit={handleSubmit} noValidate>
-            {/* Status Messages */}
-            {formStatus.message && (
-              <div className={`form-message ${formStatus.error ? 'error' : 'success'}`}>
-                <div className="message-icon">
-                  {formStatus.error ? (
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M15 9l-6 6M9 9l6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  ) : (
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
-                      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                    </svg>
-                  )}
-                </div>
-                <span>{formStatus.message}</span>
-              </div>
-            )}
-
             {/* Name Field */}
             <div className="form-group">
               <label htmlFor="name" className="form-label">
@@ -188,6 +212,7 @@ const ContactForm = ({
                 onChange={handleChange}
                 className={`form-input ${errors.name ? 'error' : ''}`}
                 placeholder="John Doe"
+                disabled={formStatus.loading}
               />
               {errors.name && <span className="error-message">{errors.name}</span>}
             </div>
@@ -206,6 +231,7 @@ const ContactForm = ({
                   onChange={handleChange}
                   className={`form-input ${errors.email ? 'error' : ''}`}
                   placeholder="john@example.com"
+                  disabled={formStatus.loading}
                 />
                 {errors.email && <span className="error-message">{errors.email}</span>}
               </div>
@@ -222,6 +248,7 @@ const ContactForm = ({
                   onChange={handleChange}
                   className={`form-input ${errors.phone ? 'error' : ''}`}
                   placeholder="+1 (555) 000-0000"
+                  disabled={formStatus.loading}
                 />
                 {errors.phone && <span className="error-message">{errors.phone}</span>}
               </div>
@@ -240,6 +267,7 @@ const ContactForm = ({
                 onChange={handleChange}
                 className={`form-input ${errors.subject ? 'error' : ''}`}
                 placeholder="How can we help you?"
+                disabled={formStatus.loading}
               />
               {errors.subject && <span className="error-message">{errors.subject}</span>}
             </div>
@@ -257,16 +285,45 @@ const ContactForm = ({
                 className={`form-input form-textarea ${errors.message ? 'error' : ''}`}
                 placeholder="Tell us more about your inquiry..."
                 rows="5"
+                disabled={formStatus.loading}
               />
               {errors.message && <span className="error-message">{errors.message}</span>}
             </div>
 
+            {/* Status Message - Now at Bottom */}
+            {formStatus.message && (
+              <div className={`form-message ${formStatus.error ? 'error' : 'success'}`}>
+                <div className="message-icon">
+                  {formStatus.error ? (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M15 9l-6 6M9 9l6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                      <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                  )}
+                </div>
+                <span>{formStatus.message}</span>
+              </div>
+            )}
+
             {/* Submit Button */}
-            <button type="submit" className="btn-submit">
-              <span>Send Message</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            <button type="submit" className="btn-submit" disabled={formStatus.loading}>
+              <span>{formStatus.loading ? 'Sending...' : 'Send Message'}</span>
+              {!formStatus.loading && (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              )}
+              {formStatus.loading && (
+                <svg className="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" opacity="0.25"/>
+                  <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+              )}
             </button>
           </form>
         </div>

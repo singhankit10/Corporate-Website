@@ -171,7 +171,7 @@
     gap: 1.25rem;
 }
 
-/* Form Messages */
+/* Form Messages - Now at Bottom */
 .form-message {
     padding: 0.875rem 1rem;
     border-radius: var(--radius-md);
@@ -180,13 +180,14 @@
     gap: 0.75rem;
     font-size: 0.9rem;
     font-weight: 600;
-    animation: slideDown 0.3s ease;
+    animation: slideUp 0.3s ease;
+    order: 10;
 }
 
-@keyframes slideDown {
+@keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(10px);
     }
 
     to {
@@ -279,6 +280,14 @@
     margin-top: -0.2rem;
 }
 
+/* Disabled state for inputs */
+.form-input:disabled,
+.form-textarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #f3f4f6;
+}
+
 /* Submit Button */
 .btn-submit {
     margin-top: 0.5rem;
@@ -297,6 +306,7 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    order: 11;
 }
 
 .btn-submit::before {
@@ -330,6 +340,32 @@
 
 .btn-submit:hover svg {
     transform: translateX(4px);
+}
+
+/* Disabled state for button */
+.btn-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-submit:disabled:hover {
+    transform: none;
+    background: var(--color-primary);
+}
+
+/* Loading spinner */
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 /* Responsive Design */
@@ -391,5 +427,16 @@
 
     .contact-section {
         padding: var(--spacing-lg) var(--spacing-sm);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+
+    .form-message,
+    .btn-submit,
+    .spinner {
+        animation: none !important;
+        transition: none !important;
     }
 }
