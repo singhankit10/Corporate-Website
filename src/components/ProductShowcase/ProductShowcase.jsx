@@ -57,7 +57,7 @@ const ProductShowcase = ({
             
             {/* Product Name Card */}
             <div className="product-name-card">
-              <span className="product-name">Sahyogi</span>
+              <span className="product-name"></span>
             </div>
 
             {/* Placeholder for App Screenshot */}
