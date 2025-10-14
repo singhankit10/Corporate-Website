@@ -116,7 +116,7 @@ const ServiceCard = memo(({ service, index }) => {
           ))}
         </ul>
         
-        <button className="service-button">
+        <button className="service-button" onClick={() => window.location.href = '/services/custom-software-development'}>
           <span>Learn More</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="arrow-icon">
             <path 
