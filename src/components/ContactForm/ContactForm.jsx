@@ -267,7 +267,7 @@ const ContactForm = ({
                   value={formData.phone}
                   onChange={handleChange}
                   className={`form-input ${errors.phone ? 'error' : ''}`}
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="+91-00000 00000"
                   disabled={formStatus.loading}
                 />
                 {errors.phone && <span className="error-message">{errors.phone}</span>}

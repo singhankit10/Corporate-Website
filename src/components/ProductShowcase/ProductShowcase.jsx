@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import './ProductShowcase.css';
+import sahyogiScreenshot from '../../assets/sahyogi-screenshot.png';
 
 const ProductShowcase = ({ 
   badge = "PRODUCT SHOWCASE",
@@ -62,13 +63,11 @@ const ProductShowcase = ({
 
             {/* Placeholder for App Screenshot */}
             <div className="app-screenshot-placeholder">
-              <div className="placeholder-content">
-                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" strokeWidth="2"/>
-                  <path d="M9 18h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-                <p>App Screenshot</p>
-              </div>
+              <img 
+                src={sahyogiScreenshot} 
+                alt="Sahyogi App Screenshot" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              />
             </div>
           </div>
         </div>
