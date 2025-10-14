@@ -3,9 +3,9 @@ import './About.css';
 
 const About = () => {
   const stats = [
-    { value: "10+", label: "Years Experience" },
-    { value: "500+", label: "Projects Delivered" },
-    { value: "98%", label: "Client Satisfaction" }
+    { value: "0", label: "Outsourcing" },
+    { value: "99%", label: "Response within SLA" },
+    { value: "<24h", label: "First Response" }
   ];
 
   const values = [

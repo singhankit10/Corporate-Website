@@ -52,6 +52,15 @@ const Sahyogi = () => {
 
   return (
     <div className="sahyogi-page">
+      {/* Introduction Section */}
+      <div className="sahyogi-intro">
+        <span className="intro-badge">OUR FLAGSHIP PRODUCT</span>
+        <h2 className="intro-title">Introducing Sahyogi</h2>
+        <p className="intro-description">
+          Your personal safety companion, available now for early testing
+        </p>
+      </div>
+
       <ProductShowcase 
         badge="EMERGENCY ASSISTANCE"
         title="Your personal safety companion for emergencies"
@@ -62,6 +71,16 @@ const Sahyogi = () => {
         }}
         features={sahyogiFeatures}
       />
+
+      {/* CTA Section */}
+      <div className="sahyogi-cta">
+        <a href="#contact" className="intro-button">
+          <span>Join Early Testing</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </a>
+      </div>
     </div>
   );
 };
