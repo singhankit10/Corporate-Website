@@ -19,9 +19,8 @@ function App() {
         <Industries />
         <Sahyogi />
         <About />
-        <BlogPage />
         <Contact />
-      
+        <BlogPage />      
       </main>
       <Footer />
     </div>

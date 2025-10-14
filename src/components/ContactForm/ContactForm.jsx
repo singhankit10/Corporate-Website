@@ -25,8 +25,17 @@ const ContactForm = ({
 
   const [errors, setErrors] = useState({});
 
-  // Initialize EmailJS
-  emailjs.init('Z5hjQYynhX-LzP4Od');
+  // Initialize EmailJS with environment variable
+  const emailjsPublicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  const emailjsServiceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const emailjsTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+
+  // Validate environment variables on component mount
+  if (!emailjsPublicKey || !emailjsServiceId || !emailjsTemplateId) {
+    console.error('EmailJS configuration missing. Please check your .env file.');
+  } else {
+    emailjs.init(emailjsPublicKey);
+  }
 
   // Validation functions
   const validateEmail = (email) => {
@@ -90,14 +99,25 @@ const ContactForm = ({
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Check if EmailJS is configured
+    if (!emailjsPublicKey || !emailjsServiceId || !emailjsTemplateId) {
+      setFormStatus({
+        submitted: false,
+        loading: false,
+        error: true,
+        message: '✗ Email service is not configured. Please contact the site administrator.'
+      });
+      return;
+    }
+
     if (validateForm()) {
       setFormStatus({ submitted: false, loading: true, error: false, message: '' });
 
       try {
-        // Send email using EmailJS
+        // Send email using EmailJS with environment variables
         await emailjs.send(
-          'service_6ibhnj2',      // Service ID
-          'template_hfqcoqd',     // Template ID
+          emailjsServiceId,
+          emailjsTemplateId,
           {
             from_name: formData.name,
             from_email: formData.email,
