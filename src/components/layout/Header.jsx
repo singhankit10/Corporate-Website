@@ -44,7 +44,7 @@ const Header = () => {
       <div className="header-container">
         {/* Logo - Left */}
         <div className="logo">
-          <a href="#home" onClick={() => handleNavClick('home')}>
+          <a href="/#home" onClick={() => handleNavClick('home')}>
             <span className="logo-main">Xeviant</span>
           </a>
         </div>
@@ -53,35 +53,35 @@ const Header = () => {
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
           <div className="nav-pill">
             <a 
-              href="#home" 
+              href="/#home" 
               className={`nav-link ${activeSection === 'home' ? 'nav-link-active' : ''}`}
               onClick={() => handleNavClick('home')}
             >
               Home
             </a>
             <a 
-              href="#services" 
+              href="/#services" 
               className={`nav-link ${activeSection === 'services' ? 'nav-link-active' : ''}`}
               onClick={() => handleNavClick('services')}
             >
               Services
             </a>
             <a 
-              href="#industries" 
+              href="/#industries" 
               className={`nav-link ${activeSection === 'industries' ? 'nav-link-active' : ''}`}
               onClick={() => handleNavClick('industries')}
             >
               Industries
             </a>
             <a 
-              href="#about" 
+              href="/#about" 
               className={`nav-link ${activeSection === 'about' ? 'nav-link-active' : ''}`}
               onClick={() => handleNavClick('about')}
             >
               About
             </a>
             <a 
-              href="#contact" 
+              href="/#contact" 
               className={`nav-link ${activeSection === 'contact' ? 'nav-link-active' : ''}`}
               onClick={() => handleNavClick('contact')}
             >
@@ -92,7 +92,7 @@ const Header = () => {
 
         {/* Get in Touch Button - Right */}
         <div className="header-cta">
-          <a href="#contact" className="btn-touch" onClick={() => handleNavClick('contact')}>
+          <a href="/#contact" className="btn-touch" onClick={() => handleNavClick('contact')}>
             <span>Get in Touch</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="btn-arrow">
               <path 

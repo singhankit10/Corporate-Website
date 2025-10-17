@@ -43,11 +43,11 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Services</h4>
             <ul className="footer-links">
-              <li><a href="#services">Software Development</a></li>
-              <li><a href="#services">Cloud & DevOps</a></li>
-              <li><a href="#services">Cybersecurity</a></li>
-              <li><a href="#services">Data Analytics & AI</a></li>
-              <li><a href="#services">IT Consulting</a></li>
+              <li><a href="/#services">Software Development</a></li>
+              <li><a href="/#services">Cloud & DevOps</a></li>
+              <li><a href="/#services">Cybersecurity</a></li>
+              <li><a href="/#services">Data Analytics & AI</a></li>
+              <li><a href="/#services">IT Consulting</a></li>
             </ul>
           </div>
 
@@ -55,11 +55,11 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Industries</h4>
             <ul className="footer-links">
-              <li><a href="#industries">Healthcare</a></li>
-              <li><a href="#industries">Finance</a></li>
-              <li><a href="#industries">E-commerce</a></li>
-              <li><a href="#industries">Education</a></li>
-              <li><a href="#industries">Manufacturing</a></li>
+              <li><a href="/#industries">Healthcare</a></li>
+              <li><a href="/#industries">Finance</a></li>
+              <li><a href="/#industries">E-commerce</a></li>
+              <li><a href="/#industries">Education</a></li>
+              <li><a href="/#industries">Manufacturing</a></li>
             </ul>
           </div>
 
@@ -67,10 +67,10 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Company</h4>
             <ul className="footer-links">
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#blog">Blog</a></li>
+              <li><a href="/#about">About Us</a></li>
+              <li><a href="/#blog">Blog</a></li>
               <li><a href="/careers">Careers</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="/#contact">Contact</a></li>
               <li><a href="/case-studies">Case Studies</a></li>
             </ul>
           </div>
@@ -81,7 +81,7 @@ const Footer = () => {
             <ul className="footer-links">
               <li><a href="/help-center">Help Center</a></li>
               <li><a href="/announcements">Announcements</a></li>
-              <li><a href="#contact">Get in Touch</a></li>
+              <li><a href="/#contact">Get in Touch</a></li>
             </ul>
           </div>
         </div>
