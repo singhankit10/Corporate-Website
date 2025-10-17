@@ -10,6 +10,8 @@ import Contact from './pages/Contact'
 import Industries from './pages/Industries';
 import Careers from './pages/footer/Careers';
 import CaseStudies from './pages/footer/CaseStudies';
+import HelpCenter from './pages/footer/HelpCenter';
+import Announcements from './pages/footer/Announcements';
 import CustomSoftwareDevelopment from './pages/services/CustomSoftwareDevelopment';
 import CloudDevOps from './pages/services/CloudDevOps';
 import Cybersecurity from './pages/services/Cybersecurity';
@@ -44,9 +46,11 @@ function App() {
           <Route path="/services/it-consulting" element={<ITConsulting />} />
           <Route path="/services/it-infrastructure" element={<ITInfrastructure />} />
 
-          {/* Other Pages */}
+          {/* Footer Pages */}
           <Route path="/careers" element={<Careers />} />
           <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/help-center" element={<HelpCenter />} />
+          <Route path="/announcements" element={<Announcements />} />
         </Routes>
         <Footer />
       </div>

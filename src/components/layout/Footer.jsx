@@ -79,8 +79,8 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Support</h4>
             <ul className="footer-links">
-              <li><a href="#help">Help Center</a></li>
-              <li><a href="#announcements">Announcements</a></li>
+              <li><a href="/help-center">Help Center</a></li>
+              <li><a href="/announcements">Announcements</a></li>
               <li><a href="#contact">Get in Touch</a></li>
             </ul>
           </div>

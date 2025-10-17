@@ -1,12 +1,130 @@
-import { useState } from 'react';
+import { useState, memo, useCallback, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import './CaseStudies.css';
+
+// Category Icons
+const CategoryIcon = memo(({ category, color }) => {
+  const icons = {
+    Healthcare: (
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+        <circle cx="30" cy="30" r="28" fill={`${color}10`} stroke={color} strokeWidth="2"/>
+        <path d="M30 18v24M18 30h24" stroke={color} strokeWidth="3" strokeLinecap="round"/>
+        <circle cx="30" cy="30" r="8" stroke={color} strokeWidth="2" fill="none"/>
+      </svg>
+    ),
+    Finance: (
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+        <circle cx="30" cy="30" r="28" fill={`${color}10`} stroke={color} strokeWidth="2"/>
+        <path d="M30 15v30M35 20h-7a4 4 0 000 8h4a4 4 0 010 8h-7" 
+          stroke={color} strokeWidth="2.5" strokeLinecap="round"/>
+      </svg>
+    ),
+    'E-commerce': (
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+        <circle cx="30" cy="30" r="28" fill={`${color}10`} stroke={color} strokeWidth="2"/>
+        <path d="M20 22l3 12h14l3-12M23 34v4M37 34v4" 
+          stroke={color} strokeWidth="2.5" strokeLinecap="round"/>
+        <circle cx="23" cy="42" r="2" fill={color}/>
+        <circle cx="37" cy="42" r="2" fill={color}/>
+      </svg>
+    ),
+    Education: (
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+        <circle cx="30" cy="30" r="28" fill={`${color}10`} stroke={color} strokeWidth="2"/>
+        <path d="M30 18L18 24l12 6 12-6-12-6z" stroke={color} strokeWidth="2" fill="none"/>
+        <path d="M18 24v8c0 4 5 7 12 7s12-3 12-7v-8" stroke={color} strokeWidth="2"/>
+      </svg>
+    )
+  };
+
+  return icons[category] || icons.Healthcare;
+});
+CategoryIcon.displayName = 'CategoryIcon';
+CategoryIcon.propTypes = {
+  category: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired
+};
+
+// Case Study Item Component
+const CaseStudyItem = memo(({ study }) => {
+  const { category, title, client, challenge, solution, results, tech, color } = study;
+
+  return (
+    <article className="case-item">
+      <div className="case-icon-wrapper">
+        <CategoryIcon category={category} color={color} />
+      </div>
+
+      <div className="case-header">
+        <div className="case-meta">
+          <span className="case-category" style={{ background: `${color}15`, color }}>
+            {category}
+          </span>
+          <span className="case-client">{client}</span>
+        </div>
+      </div>
+
+      <h3 className="case-title">{title}</h3>
+
+      <div className="case-details">
+        <div className="case-detail-row">
+          <span className="case-label">Challenge</span>
+          <p className="case-text">{challenge}</p>
+        </div>
+
+        <div className="case-detail-row">
+          <span className="case-label">Solution</span>
+          <p className="case-text">{solution}</p>
+        </div>
+
+        <div className="case-detail-row">
+          <span className="case-label">Results</span>
+          <ul className="case-results-list">
+            {results.map((result, idx) => (
+              <li key={idx} className="result-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M5 13l4 4L19 7" stroke={color} strokeWidth="2.5" strokeLinecap="round"/>
+                </svg>
+                {result}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="case-tech-row">
+        <div className="case-detail-row">
+          <span className="case-label">Tech Stack</span>
+          <div className="tech-tags">
+            {tech.map((item, idx) => (
+              <span key={idx} className="tech-tag">{item}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+});
+CaseStudyItem.displayName = 'CaseStudyItem';
+CaseStudyItem.propTypes = {
+  study: PropTypes.shape({
+    category: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    client: PropTypes.string.isRequired,
+    challenge: PropTypes.string.isRequired,
+    solution: PropTypes.string.isRequired,
+    results: PropTypes.arrayOf(PropTypes.string).isRequired,
+    tech: PropTypes.arrayOf(PropTypes.string).isRequired,
+    color: PropTypes.string.isRequired
+  }).isRequired
+};
 
 const CaseStudies = () => {
   const [activeFilter, setActiveFilter] = useState('All');
 
-  const filters = ['All', 'Healthcare', 'Finance', 'E-commerce', 'Education'];
+  const filters = useMemo(() => ['All', 'Healthcare', 'Finance', 'E-commerce', 'Education'], []);
 
-  const caseStudies = [
+  const caseStudies = useMemo(() => [
     {
       id: 1,
       category: 'Healthcare',
@@ -21,7 +139,6 @@ const CaseStudies = () => {
         'Integrated telemedicine serving 5,000+ patients monthly'
       ],
       tech: ['React', 'Node.js', 'PostgreSQL', 'AWS', 'HL7 FHIR'],
-      image: '🏥',
       color: '#10b981'
     },
     {
@@ -38,7 +155,6 @@ const CaseStudies = () => {
         'Processing 100K+ transactions per second'
       ],
       tech: ['Python', 'TensorFlow', 'Apache Kafka', 'Redis', 'React'],
-      image: '📈',
       color: '#3b82f6'
     },
     {
@@ -55,7 +171,6 @@ const CaseStudies = () => {
         'Unified inventory across 200+ stores'
       ],
       tech: ['Next.js', 'MongoDB', 'Stripe', 'Shopify API', 'AWS Lambda'],
-      image: '🛒',
       color: '#f59e0b'
     },
     {
@@ -72,7 +187,6 @@ const CaseStudies = () => {
         '40% better learning outcomes'
       ],
       tech: ['React', 'WebRTC', 'Node.js', 'MongoDB', 'AWS'],
-      image: '🎓',
       color: '#8b5cf6'
     },
     {
@@ -89,7 +203,6 @@ const CaseStudies = () => {
         'Real-time risk monitoring across 50+ markets'
       ],
       tech: ['Python', 'FastAPI', 'PostgreSQL', 'ML Models', 'Azure'],
-      image: '🔒',
       color: '#ef4444'
     },
     {
@@ -106,14 +219,20 @@ const CaseStudies = () => {
         'Analyzed 100K+ medical images'
       ],
       tech: ['Python', 'PyTorch', 'DICOM', 'Flask', 'GCP'],
-      image: '🔬',
       color: '#06b6d4'
     }
-  ];
+  ], []);
 
-  const filteredStudies = activeFilter === 'All' 
-    ? caseStudies 
-    : caseStudies.filter(study => study.category === activeFilter);
+  const filteredStudies = useMemo(() => 
+    activeFilter === 'All' 
+      ? caseStudies 
+      : caseStudies.filter(study => study.category === activeFilter),
+    [activeFilter, caseStudies]
+  );
+
+  const handleFilterChange = useCallback((filter) => {
+    setActiveFilter(filter);
+  }, []);
 
   return (
     <div className="case-studies-page">
@@ -132,12 +251,14 @@ const CaseStudies = () => {
       {/* Filter Section */}
       <section className="case-filter-section">
         <div className="filter-container">
-          <div className="filter-pills">
+          <div className="filter-pills" role="tablist" aria-label="Filter case studies by category">
             {filters.map((filter) => (
               <button
                 key={filter}
+                role="tab"
+                aria-selected={activeFilter === filter}
                 className={`filter-pill ${activeFilter === filter ? 'active' : ''}`}
-                onClick={() => setActiveFilter(filter)}
+                onClick={() => handleFilterChange(filter)}
               >
                 {filter}
               </button>
@@ -146,56 +267,11 @@ const CaseStudies = () => {
         </div>
       </section>
 
-      {/* Case Studies Grid */}
-      <section className="case-studies-grid">
-        <div className="grid-container">
+      {/* Case Studies List */}
+      <section className="case-studies-list">
+        <div className="case-items">
           {filteredStudies.map((study) => (
-            <article key={study.id} className="case-study-card">
-              <div className="case-card-header">
-                <div className="case-emoji" style={{ background: `${study.color}15` }}>
-                  <span style={{ color: study.color }}>{study.image}</span>
-                </div>
-                <span className="case-category" style={{ background: `${study.color}15`, color: study.color }}>
-                  {study.category}
-                </span>
-              </div>
-
-              <h3 className="case-title">{study.title}</h3>
-              <p className="case-client">Client: {study.client}</p>
-
-              <div className="case-section">
-                <h4 className="case-section-title">Challenge</h4>
-                <p className="case-text">{study.challenge}</p>
-              </div>
-
-              <div className="case-section">
-                <h4 className="case-section-title">Solution</h4>
-                <p className="case-text">{study.solution}</p>
-              </div>
-
-              <div className="case-section">
-                <h4 className="case-section-title">Key Results</h4>
-                <ul className="case-results">
-                  {study.results.map((result, idx) => (
-                    <li key={idx} className="result-item">
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                        <path d="M5 13l4 4L19 7" stroke={study.color} strokeWidth="2.5" strokeLinecap="round"/>
-                      </svg>
-                      {result}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="case-tech">
-                <h4 className="case-section-title">Technologies</h4>
-                <div className="tech-tags">
-                  {study.tech.map((tech, idx) => (
-                    <span key={idx} className="tech-tag">{tech}</span>
-                  ))}
-                </div>
-              </div>
-            </article>
+            <CaseStudyItem key={study.id} study={study} />
           ))}
         </div>
       </section>
@@ -209,7 +285,7 @@ const CaseStudies = () => {
           </p>
           <a href="/#contact" className="cta-button">
             <span>Start Your Project</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
             </svg>
           </a>
@@ -219,4 +295,4 @@ const CaseStudies = () => {
   );
 };
 
-export default CaseStudies;
+export default memo(CaseStudies);
