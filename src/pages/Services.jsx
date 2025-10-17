@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './Services.css';
 
@@ -85,6 +86,7 @@ const ServiceIcons = {
 
 // Service Card Component
 const ServiceCard = memo(({ service, index }) => {
+  const navigate = useNavigate();
   const IconComponent = ServiceIcons[service.iconName];
 
   return (
@@ -116,7 +118,10 @@ const ServiceCard = memo(({ service, index }) => {
           ))}
         </ul>
         
-        <button className="service-button" onClick={() => window.location.href = '/services/custom-software-development'}>
+        <button 
+          className="service-button" 
+          onClick={() => navigate(service.route)}
+        >
           <span>Learn More</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="arrow-icon">
             <path 
@@ -140,6 +145,7 @@ ServiceCard.propTypes = {
     iconName: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     features: PropTypes.arrayOf(PropTypes.string).isRequired,
+    route: PropTypes.string.isRequired,
   }).isRequired,
   index: PropTypes.number.isRequired,
 };
@@ -152,6 +158,7 @@ const Services = () => {
     {
       iconName: 'CustomSoftware',
       title: 'Custom Software Development',
+      route: '/services/custom-software-development',
       features: [
         'Web applications',
         'Mobile apps',
@@ -162,6 +169,7 @@ const Services = () => {
     {
       iconName: 'CloudDevOps',
       title: 'Cloud Engineering & DevOps',
+      route: '/services/cloud-devops',
       features: [
         'AWS & Azure setup',
         'CI/CD pipelines',
@@ -172,6 +180,7 @@ const Services = () => {
     {
       iconName: 'Cybersecurity',
       title: 'Cybersecurity Solutions',
+      route: '/services/cybersecurity',
       features: [
         'Security audits',
         'Penetration testing',
@@ -182,6 +191,7 @@ const Services = () => {
     {
       iconName: 'DataAnalytics',
       title: 'Data Analytics & AI',
+      route: '/services/data-analytics-ai',
       features: [
         'Machine learning models',
         'Data visualization',
@@ -192,6 +202,7 @@ const Services = () => {
     {
       iconName: 'ITConsulting',
       title: 'Strategic IT Consulting',
+      route: '/services/it-consulting',
       features: [
         'Digital transformation',
         'Technology roadmap',
@@ -202,6 +213,7 @@ const Services = () => {
     {
       iconName: 'ITInfrastructure',
       title: 'IT Infrastructure Management',
+      route: '/services/it-infrastructure',
       features: [
         'Network setup',
         'Server management',

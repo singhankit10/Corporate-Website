@@ -9,6 +9,11 @@ import BlogPage from './pages/BlogPage'
 import Contact from './pages/Contact'
 import Industries from './pages/Industries';
 import CustomSoftwareDevelopment from './pages/services/CustomSoftwareDevelopment';
+import CloudDevOps from './pages/services/CloudDevOps';
+import Cybersecurity from './pages/services/Cybersecurity';
+import DataAnalyticsAI from './pages/services/DataAnalyticsAI';
+import ITConsulting from './pages/services/ITConsulting';
+import ITInfrastructure from './pages/services/ITInfrastructure';
 import './App.css'
 
 function App() {
@@ -28,7 +33,14 @@ function App() {
               <BlogPage />
             </main>
           } />
+          
+          {/* Service Detail Pages */}
           <Route path="/services/custom-software-development" element={<CustomSoftwareDevelopment />} />
+          <Route path="/services/cloud-devops" element={<CloudDevOps />} />
+          <Route path="/services/cybersecurity" element={<Cybersecurity />} />
+          <Route path="/services/data-analytics-ai" element={<DataAnalyticsAI />} />
+          <Route path="/services/it-consulting" element={<ITConsulting />} />
+          <Route path="/services/it-infrastructure" element={<ITInfrastructure />} />
         </Routes>
         <Footer />
       </div>

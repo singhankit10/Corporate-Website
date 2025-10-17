@@ -1,83 +1,86 @@
 import { useEffect } from 'react';
 import './CommonServicesStyles.css';
 
-const CustomSoftwareDevelopment = () => {
+const CloudDevOps = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const offerings = [
     {
-      title: "Web Applications",
-      description: "Scalable, responsive web apps built with modern frameworks like React, Vue, and Angular.",
+      title: "Cloud Infrastructure Setup",
+      description: "Design and implement scalable cloud architectures on AWS, Azure, or Google Cloud Platform.",
       icon: (
-        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" 
+        <path d="M19 18H6a4 4 0 01-1.8-7.6A6 6 0 0116.5 6a4.5 4.5 0 013.3 7.5A4 4 0 0119 18z" 
           stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
       )
     },
     {
-      title: "Mobile Applications",
-      description: "Native and cross-platform mobile solutions for iOS and Android that deliver exceptional user experiences.",
-      icon: (
-        <rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" strokeWidth="2" fill="none"/>
-      )
-    },
-    {
-      title: "Enterprise Software",
-      description: "Robust, secure enterprise solutions that streamline operations and drive business efficiency.",
-      icon: (
-        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" strokeWidth="2" fill="none"/>
-      )
-    },
-    {
-      title: "API Development",
-      description: "RESTful and GraphQL APIs designed for seamless integration and optimal performance.",
+      title: "CI/CD Pipeline Automation",
+      description: "Streamline your development workflow with automated testing, building, and deployment pipelines.",
       icon: (
         <>
           <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2" fill="none"/>
-          <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24" 
+          <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24" 
             stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </>
+      )
+    },
+    {
+      title: "Container Orchestration",
+      description: "Deploy and manage containerized applications using Kubernetes, Docker Swarm, or Amazon ECS.",
+      icon: (
+        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="2" fill="none"/>
+      )
+    },
+    {
+      title: "Infrastructure as Code",
+      description: "Automate infrastructure provisioning with Terraform, CloudFormation, or Ansible for consistency.",
+      icon: (
+        <>
+          <path d="M10 20l4-16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <path d="M6 16l-4-4 4-4M18 8l4 4-4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
         </>
       )
     }
   ];
 
   const technologies = [
-    { name: "React", category: "Frontend" },
-    { name: "Node.js", category: "Backend" },
-    { name: "Python", category: "Backend" },
-    { name: "PostgreSQL", category: "Database" },
-    { name: "MongoDB", category: "Database" },
-    { name: "Docker", category: "DevOps" },
-    { name: "Kubernetes", category: "DevOps" },
-    { name: "AWS", category: "Cloud" }
+    { name: "AWS", category: "Cloud Platform" },
+    { name: "Azure", category: "Cloud Platform" },
+    { name: "Docker", category: "Containerization" },
+    { name: "Kubernetes", category: "Orchestration" },
+    { name: "Terraform", category: "IaC" },
+    { name: "Jenkins", category: "CI/CD" },
+    { name: "GitLab CI", category: "CI/CD" },
+    { name: "Ansible", category: "Automation" }
   ];
 
   const process = [
     {
       step: "01",
-      title: "Discovery & Planning",
-      description: "We analyze your requirements, define project scope, and create a detailed roadmap."
+      title: "Infrastructure Assessment",
+      description: "Analyze your current infrastructure, identify bottlenecks, and define cloud migration strategy."
     },
     {
       step: "02",
-      title: "Design & Prototyping",
-      description: "Our designers create intuitive interfaces and interactive prototypes for validation."
+      title: "Architecture Design",
+      description: "Design scalable, cost-optimized cloud architecture with high availability and disaster recovery."
     },
     {
       step: "03",
-      title: "Development",
-      description: "Agile development with regular sprints, code reviews, and continuous integration."
+      title: "Migration & Implementation",
+      description: "Execute phased migration with minimal downtime, implementing infrastructure as code practices."
     },
     {
       step: "04",
-      title: "Testing & QA",
-      description: "Comprehensive testing ensures quality, security, and performance standards."
+      title: "Pipeline Automation",
+      description: "Set up CI/CD pipelines with automated testing, security scanning, and deployment workflows."
     },
     {
       step: "05",
-      title: "Deployment & Support",
-      description: "Smooth deployment with ongoing maintenance and technical support."
+      title: "Monitoring & Optimization",
+      description: "Implement comprehensive monitoring, logging, and continuous optimization for cost and performance."
     }
   ];
 
@@ -92,11 +95,11 @@ const CustomSoftwareDevelopment = () => {
             </svg>
             Back to Services
           </a>
-          <span className="service-badge">CUSTOM DEVELOPMENT</span>
-          <h1 className="service-hero-title">Custom Software Development</h1>
+          <span className="service-badge">CLOUD & DEVOPS</span>
+          <h1 className="service-hero-title">Cloud Engineering & DevOps</h1>
           <p className="service-hero-description">
-            Transform your business with tailored software solutions designed to meet your unique challenges 
-            and drive measurable results.
+            Accelerate your digital transformation with modern cloud infrastructure, automated workflows, 
+            and DevOps best practices that reduce deployment time and increase reliability.
           </p>
         </div>
       </section>
@@ -139,7 +142,7 @@ const CustomSoftwareDevelopment = () => {
       {/* Process */}
       <section className="service-process">
         <div className="process-container">
-          <h2 className="section-title">Our Development Process</h2>
+          <h2 className="section-title">Our Implementation Process</h2>
           <div className="process-timeline">
             {process.map((item, idx) => (
               <div key={idx} className="process-step">
@@ -157,12 +160,13 @@ const CustomSoftwareDevelopment = () => {
       {/* CTA */}
       <section className="service-cta">
         <div className="cta-container">
-          <h2 className="cta-title">Ready to Build Your Solution?</h2>
+          <h2 className="cta-title">Ready to Modernize Your Infrastructure?</h2>
           <p className="cta-description">
-            Let's discuss how we can help transform your ideas into powerful software solutions.
+            Let's discuss how we can help you leverage cloud technologies and DevOps practices 
+            to accelerate deployment and reduce operational costs.
           </p>
           <a href="/#contact" className="cta-button">
-            <span>Start Your Project</span>
+            <span>Get Started</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
               <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
             </svg>
@@ -173,4 +177,4 @@ const CustomSoftwareDevelopment = () => {
   );
 };
 
-export default CustomSoftwareDevelopment;
+export default CloudDevOps;
