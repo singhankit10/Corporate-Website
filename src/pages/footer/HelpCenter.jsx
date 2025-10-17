@@ -223,13 +223,13 @@ const HelpCenter = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="help-contact">
-        <div className="contact-container">
-          <h2 className="contact-title">Still need help?</h2>
-          <p className="contact-description">
+      <section className="help-support">
+        <div className="support-container">
+          <h2 className="support-title">Still need help?</h2>
+          <p className="support-description">
             Can't find what you're looking for? Our support team is here to help you.
           </p>
-          <a href="/#contact" className="contact-button">
+          <a href="/#contact" className="support-button">
             <span>Contact Support</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
               <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>

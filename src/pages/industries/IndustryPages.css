@@ -1,0 +1,389 @@
+.industry-page {
+    width: 100%;
+    padding-top: 80px;
+}
+
+/* Hero Section */
+.industry-hero {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+.industry-hero-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    transition: all 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--color-accent-blue);
+    transform: translateX(-4px);
+}
+
+.industry-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-accent-blue);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    padding: 0.5rem 1.25rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: var(--radius-full);
+}
+
+.industry-hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+}
+
+.industry-hero-description {
+    font-size: 1.25rem;
+    color: var(--color-gray-700);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Container */
+.industry-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+/* Solutions Section */
+.industry-solutions {
+    padding: 5rem 0;
+    background: var(--color-white);
+}
+
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 4rem;
+}
+
+.solution-item {
+    text-align: center;
+}
+
+.solution-visual {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.solution-graphic {
+    width: 200px;
+    height: 200px;
+}
+
+.solution-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+}
+
+.solution-description {
+    font-size: 1rem;
+    color: var(--color-gray-700);
+    line-height: 1.6;
+}
+
+/* Product Section */
+.industry-product .industry-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* centers the two columns as a block */
+    gap: 3rem;
+}
+
+.industry-product .product-content {
+    margin: 0 auto;
+    text-align: center;
+    /* centers all text + CTA */
+}
+
+.industry-product .product-features {
+    align-items: center;
+    /* centers the bullet rows under the text */
+}
+
+.product-content {
+    max-width: 600px;
+}
+
+.product-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-accent-blue);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.product-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.product-text {
+    font-size: 1.125rem;
+    color: var(--color-gray-700);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.product-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.feature-point {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    color: var(--color-gray-700);
+    font-weight: 500;
+}
+
+.product-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent-blue));
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.product-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.product-cta svg {
+    transition: transform 0.3s ease;
+}
+
+.product-cta:hover svg {
+    transform: translateX(4px);
+}
+
+.product-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-visual svg {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+/* Benefits Section */
+.industry-benefits {
+    padding: 5rem 0;
+    background: var(--color-white);
+}
+
+.benefits-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    color: var(--color-gray-700);
+    font-weight: 500;
+}
+
+.benefit-item svg {
+    flex-shrink: 0;
+}
+
+/* CTA Section */
+.industry-cta {
+    padding: 5rem 0;
+    background: var(--color-secondary);
+    text-align: center;
+}
+
+.cta-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.cta-text {
+    font-size: 1.125rem;
+    color: var(--color-gray-700);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent-blue));
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    border-radius: var(--radius-full);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.cta-button svg {
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover svg {
+    transform: translateX(4px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .industry-container {
+        display: block;
+    }
+
+    .industry-product .industry-container {
+        display: block;
+        text-align: center;
+    }
+
+    .industry-product .product-content,
+    .industry-product .product-visual {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .product-content {
+        max-width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .solutions-grid {
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .industry-hero {
+        padding: 3rem 1.5rem;
+    }
+
+    .industry-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .industry-hero-description {
+        font-size: 1.125rem;
+    }
+
+    .section-heading {
+        font-size: 2rem;
+    }
+
+    .solutions-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .product-heading {
+        font-size: 2rem;
+    }
+
+    .benefits-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .cta-heading {
+        font-size: 2rem;
+    }
+
+    .industry-container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .industry-hero-title {
+        font-size: 2rem;
+    }
+
+    .solution-graphic {
+        width: 160px;
+        height: 160px;
+    }
+
+    .product-heading {
+        font-size: 1.75rem;
+    }
+
+    .cta-heading {
+        font-size: 1.75rem;
+    }
+}

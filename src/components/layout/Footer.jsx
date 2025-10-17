@@ -90,11 +90,11 @@ const Footer = () => {
           <div className="footer-bottom-content">
             <p className="copyright">© {currentYear} Xeviant. All rights reserved.</p>
             <div className="footer-legal">
-              <a href="#privacy">Privacy Policy</a>
+              <a href="/privacy">Privacy Policy</a>
               <span className="separator">•</span>
-              <a href="#terms">Terms of Service</a>
+              <a href="/terms">Terms of Service</a>
               <span className="separator">•</span>
-              <a href="#security">Security</a>
+              <a href="/security">Security</a>
             </div>
           </div>
         </div>
