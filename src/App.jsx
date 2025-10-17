@@ -8,6 +8,8 @@ import About from './pages/About'
 import BlogPage from './pages/BlogPage'
 import Contact from './pages/Contact'
 import Industries from './pages/Industries';
+import Careers from './pages/footer/Careers';
+import CaseStudies from './pages/footer/CaseStudies';
 import CustomSoftwareDevelopment from './pages/services/CustomSoftwareDevelopment';
 import CloudDevOps from './pages/services/CloudDevOps';
 import Cybersecurity from './pages/services/Cybersecurity';
@@ -41,6 +43,10 @@ function App() {
           <Route path="/services/data-analytics-ai" element={<DataAnalyticsAI />} />
           <Route path="/services/it-consulting" element={<ITConsulting />} />
           <Route path="/services/it-infrastructure" element={<ITInfrastructure />} />
+
+          {/* Other Pages */}
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
         </Routes>
         <Footer />
       </div>

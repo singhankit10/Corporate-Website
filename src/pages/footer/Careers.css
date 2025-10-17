@@ -1,0 +1,340 @@
+.careers-page {
+    width: 100%;
+    padding-top: 80px;
+}
+
+/* Hero Section */
+.careers-hero {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.careers-hero-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.careers-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--color-accent-blue);
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    padding: 0.5rem 1.25rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: var(--radius-full);
+}
+
+.careers-hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+}
+
+.careers-hero-description {
+    font-size: 1.25rem;
+    color: var(--color-gray-700);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Status Section */
+.careers-status {
+    padding: 5rem 2rem;
+    background: var(--color-white);
+}
+
+.status-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.status-card {
+    background: var(--color-secondary);
+    padding: 3rem;
+    border-radius: var(--radius-xl);
+    text-align: center;
+    border: 2px solid var(--color-accent-light);
+}
+
+.status-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-sky));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0 auto 2rem;
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+}
+
+.status-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.status-description {
+    font-size: 1.125rem;
+    color: var(--color-gray-700);
+    line-height: 1.7;
+}
+
+/* Values Section */
+.careers-values {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.values-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-gray-700);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.value-card {
+    background: var(--color-white);
+    padding: 2.5rem;
+    border-radius: var(--radius-lg);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.value-card:hover {
+    border-color: var(--color-accent-blue);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(59, 130, 246, 0.15);
+}
+
+.value-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-sky));
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.value-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+}
+
+.value-description {
+    font-size: 1rem;
+    color: var(--color-gray-700);
+    line-height: 1.6;
+}
+
+/* Benefits Section */
+.careers-benefits {
+    padding: 5rem 2rem;
+    background: var(--color-white);
+}
+
+.benefits-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.benefit-card {
+    background: var(--color-secondary);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.benefit-card:hover {
+    border-color: var(--color-accent-blue);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.1);
+}
+
+.benefit-emoji {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.benefit-description {
+    font-size: 0.95rem;
+    color: var(--color-gray-700);
+}
+
+/* Signup Section */
+.careers-signup {
+    padding: 5rem 2rem;
+    background: var(--color-secondary);
+}
+
+.signup-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.signup-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.signup-description {
+    font-size: 1.125rem;
+    color: var(--color-gray-700);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+.signup-form {
+    margin-top: 2rem;
+}
+
+.form-group {
+    display: flex;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.signup-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--color-gray-200);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.signup-input:focus {
+    border-color: var(--color-accent-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.signup-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent-blue));
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    white-space: nowrap;
+}
+
+.signup-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.success-message {
+    margin-top: 1rem;
+    color: #059669;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .careers-hero {
+        padding: 4rem 1.5rem;
+    }
+
+    .careers-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .status-card {
+        padding: 2rem;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group {
+        flex-direction: column;
+    }
+
+    .signup-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .careers-hero-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+}
