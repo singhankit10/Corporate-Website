@@ -5,7 +5,7 @@ import Home from './pages/Home'
 import Services from './pages/Services'
 import Sahyogi from './pages/Sahyogi'
 import About from './pages/About'
-import BlogPage from './pages/BlogPage'
+// import BlogPage from './pages/BlogPage'
 import Contact from './pages/Contact'
 import Industries from './pages/Industries';
 import Careers from './pages/footer/Careers';
@@ -43,7 +43,7 @@ function App() {
               <Sahyogi />
               <About />
               <Contact />
-              <BlogPage />
+              {/* <BlogPage /> */}
             </main>
           } />
           

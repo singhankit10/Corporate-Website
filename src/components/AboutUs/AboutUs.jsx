@@ -132,19 +132,28 @@ const AboutUs = ({
                   {/* Front of card */}
                   <div className="team-card-front">
                     <div className="team-image-wrapper">
-                      <div className="team-image" style={{ backgroundImage: `url(${member.image})` }}>
-                        {!member.image && (
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="team-image"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div className="team-image">
                           <div className="team-placeholder">
                             <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
                               <circle cx="12" cy="8" r="4" fill="currentColor"/>
                               <path d="M4 20c0-4 3-6 8-6s8 2 8 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                             </svg>
                           </div>
-                        )}
-                      </div>
+                        </div>
+                      )}
                       <div className="team-ring ring-1"></div>
                       <div className="team-ring ring-2"></div>
                     </div>
+
                     <div className="team-info">
                       <h4 className="team-name">{member.name}</h4>
                       <p className="team-role">{member.role}</p>

@@ -55,31 +55,11 @@ const About = () => {
   ];
 
   const team = [
-    {
-      name: "Dhawal Tora",
-      role: "CEO",
-      image: "" // Add actual image URL here
-    },
-    {
-      name: "Shyam Gupta",
-      role: "CGO",
-      image: "" // Add actual image URL here
-    },
-    {
-      name: "Sadhna Dixit",
-      role: "CMO",
-      image: "" // Add actual image URL here
-    },
-    {
-      name: "Kunal Ayachit",
-      role: "CTO",
-      image: "" // Add actual image URL here
-    },
-    {
-      name: "Ankit Singh",
-      role: "VP of Engineering",
-      image: "" // Add actual image URL here
-    }
+    { name: "Dhawal Tora", role: "CEO", image: "/team/dhawal.jpg" },
+    { name: "Shyam Gupta", role: "CGO", image: "/team/shyam.jpg" },
+    { name: "Sadhna Dixit", role: "CMO" },
+    { name: "Kunal Ayachit", role: "CTO", image: "/team/kunal.jpg" },
+    { name: "Ankit Singh", role: "VP of Engineering", image: "/team/ankit.jpg" },
   ];
 
   return (
